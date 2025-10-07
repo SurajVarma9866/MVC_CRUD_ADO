@@ -1,33 +1,39 @@
-﻿@model List<Product>
+@model List<Product>
 
-    <table>
-        
-        @foreach(var item in Model)
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<h2 class="text-center mt-4 mb-3">📦 Product List</h2>
+
+<table class="table table-striped table-bordered text-center align-middle shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Price (₹)</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("F2")</td>
+                    <td>@item.Category</td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-            <td>Item Id</td>
-            <td>
-                @item.Id
-            </td>
+                <td colspan="4" class="text-muted">No products available.</td>
             </tr>
-        <tr>
-            <td>Item Name</td>
-            <td>
-                @item.Name
-            </td>
-        </tr>
-        <tr>
-            <td>Item price</td>
-            <td>
-                @item.Price
-            </td>
-        </tr>
-        <tr>
-            <td>Item Category</td>
-            <td>
-                @item.Category
-            </td>
-        </tr>
         }
-       
-    </table>
+    </tbody>
+</table>
+
