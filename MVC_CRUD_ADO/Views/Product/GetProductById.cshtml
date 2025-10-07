@@ -1,0 +1,14 @@
+﻿@model Product
+<form asp-action="GetProductById" asp-controller="Product" method="post">
+    <table>
+        <tr>
+            <td>Item Id</td>
+            <td><input asp-for="Id" /></td>
+        </tr>
+       
+        <tr>
+            <td><input type="submit" value="Get" /></td>
+        </tr>
+    </table>
+</form>
+
